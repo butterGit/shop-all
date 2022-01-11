@@ -1,0 +1,54 @@
+.sidenav {
+  height: 50%; /* 100% Full-height */
+  width: 2rem; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 25%; /* Stay at the top */
+  left: 0;
+  background-color: rgb(206, 214, 221); /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.wrapper{
+  width: 80%;
+  margin: auto;
+}
+
+.flex-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+}
+
+.grid-item {
+  height: 20vh;
+  flex-basis: auto;
+  width: 25%;
+  position: relative;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #ccc;
+  margin: 1rem 2rem;
+  border: 1px solid #000;
+}
+
+@media(max-width: 1073px) {
+  .grid-item {
+   flex-basis: 33.33%;
+ }
+}
+@media(max-width: 815px) {
+ .grid-item {
+   flex-basis: 50%;
+ }
+}
+@media(max-width: 555px) {
+ .grid-item {
+   flex-basis: 100%;
+ }
+}

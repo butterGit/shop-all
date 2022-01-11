@@ -1,12 +1,14 @@
-import Navbar from "./Navbar/Navbar"
+import Navbar from "./Navbar/Navbar";
+import { Fragment } from "react";
+
 
 const Layout = (props) => {
-    return (
-        <div>
-            <Navbar/>
-           <main>{props.children}</main> 
-        </div> 
-        )
-}
+  return (
+    <Fragment>
+      <Navbar />
+      <main>{props.children}</main>
+    </Fragment>
+  );
+};
 
 export default Layout;
