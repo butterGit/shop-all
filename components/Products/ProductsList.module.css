@@ -1,54 +1,68 @@
-.sidenav {
-  height: 50%; /* 100% Full-height */
-  width: 2rem; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
-  top: 25%; /* Stay at the top */
+.filterSideNav {
+  height: 50%;
+  width: 6rem;
+  position: fixed;
+  z-index: 1; 
+  top: 25%; 
   left: 0;
-  background-color: rgb(206, 214, 221); /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  background-color: rgb(227, 231, 235);
+  overflow-x: hidden; 
+  padding-top: 60px; 
+  transition: left 0.5s ease;
 }
 
-.wrapper{
+
+
+.wrapper {
   width: 80%;
-  margin: auto;
+  margin: 0 auto;
 }
 
-.flex-container{
+.flex-container {
+  width: 100%;
   display: flex;
+  flex-flow: column wrap;
+  flex-wrap: wrap;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
 
 }
 
 .grid-item {
-  height: 20vh;
   flex-basis: auto;
   width: 25%;
   position: relative;
-  padding: 10px;
   box-sizing: border-box;
-  background: #ccc;
   margin: 1rem 2rem;
-  border: 1px solid #000;
+
 }
 
-@media(max-width: 1073px) {
+@media (max-width: 1073px) {
+
+  .wrapper {
+    width: 100%;
+  }
+
+  .flex-container {
+    justify-content: center;
+  }
+
+  .filterSideNav {
+    display: 6rem;
+  }
+
   .grid-item {
-   flex-basis: 33.33%;
- }
+    flex-basis: 33.33%;
+  }
 }
-@media(max-width: 815px) {
- .grid-item {
-   flex-basis: 50%;
- }
+@media (max-width: 815px) {
+  .grid-item {
+    flex-basis: 50%;
+  }
 }
-@media(max-width: 555px) {
- .grid-item {
-   flex-basis: 100%;
- }
+@media (max-width: 555px) {
+  .grid-item {
+    flex-basis: 100%;
+  }
 }
