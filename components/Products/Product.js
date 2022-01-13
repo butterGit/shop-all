@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./Product.module.css";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faDollarSign,
@@ -8,20 +9,22 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Product = (props) => {
+  const id = props.id;
   return (
-    <div className={styles.product}>
-      <h2>{props.title}</h2>
-      <Image
-        className={styles.image}
-        src={props.image}
-        alt="Picture of the author"
-        width={500}
-        height={500}
-      />
-      <h3 className={styles.center}>
-        {props.price} <FontAwesomeIcon icon={faDollarSign} />
-      </h3>
-  
+    <Link href = {"/"+id} passHref>
+      <div className={styles.product}>
+        <h2>{props.title}</h2>
+        <Image
+          className={styles.image}
+          src={props.image}
+          alt="Picture of the author"
+          width={500}
+          height={500}
+        />
+        <h3 className={styles.center}>
+          {props.price} <FontAwesomeIcon icon={faDollarSign} />
+        </h3>
+
         <h3 className={styles.center}>Rating</h3>
         <div className={styles.rating}>
           <div>
@@ -31,8 +34,8 @@ const Product = (props) => {
             <FontAwesomeIcon icon={faUserPlus} /> {props.count}
           </div>
         </div>
-      
-    </div>
+      </div>
+    </Link>
   );
 };
 

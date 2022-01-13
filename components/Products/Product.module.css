@@ -4,6 +4,9 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
+    min-height: 600px;
+    border-radius: 8px;
 }
 
 .image {
@@ -26,6 +29,12 @@
 
 .center {
     align-self: center;
+}
+
+@media (max-width: 815px) {
+  .product {
+      min-height: initial;
+  }
 }
 
 

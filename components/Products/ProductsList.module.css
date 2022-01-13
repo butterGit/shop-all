@@ -11,8 +11,6 @@
   transition: left 0.5s ease;
 }
 
-
-
 .wrapper {
   width: 80%;
   margin: 0 auto;
@@ -30,38 +28,39 @@
 }
 
 .grid-item {
-  flex-basis: auto;
-  width: 25%;
+  flex: 20%;
   position: relative;
   box-sizing: border-box;
   margin: 1rem 2rem;
+  height: 100%;
+}
 
+@media (max-width: 1376px) {
+  .grid-item {
+    max-width: 300px
+  }
 }
 
 @media (max-width: 1073px) {
-
-  .wrapper {
-    width: 100%;
-  }
-
-  .flex-container {
-    justify-content: center;
-  }
-
   .filterSideNav {
     display: 6rem;
   }
 
   .grid-item {
-    flex-basis: 33.33%;
+    max-width: initial;
+    flex-basis: 33.3%;
   }
 }
 @media (max-width: 815px) {
   .grid-item {
+    max-width: initial;
     flex-basis: 50%;
   }
 }
 @media (max-width: 555px) {
+  .wrapper {
+    width: 100%;
+  }
   .grid-item {
     flex-basis: 100%;
   }
