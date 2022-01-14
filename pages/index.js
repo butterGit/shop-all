@@ -16,7 +16,7 @@ export async function getStaticProps() {
   const productsCollection = db.collection("products");
 
   const products = await productsCollection.find().toArray();
-  
+
   client.close();
 
   return {
@@ -25,7 +25,6 @@ export async function getStaticProps() {
         id: product._id.toString(),
         title: product.title,
         price: product.price,
-        description: product.description,
         category: product.category,
         image: product.image,
         rating: product.rating

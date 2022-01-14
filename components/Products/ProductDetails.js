@@ -1,6 +1,6 @@
-const ProductDetails = () => {
+const ProductDetails = (props) => {
     return (
-        <p>Test</p>
+        <p>{props.product.title}</p>
     )
 }
 

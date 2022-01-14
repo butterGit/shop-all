@@ -5,7 +5,6 @@ import Product from "./Product";
 
 const ProductsList = (props) => {
 
-
   return (
    
     <Fragment >
@@ -13,9 +12,9 @@ const ProductsList = (props) => {
       <div className={styles.wrapper}>
         <div className={styles["flex-container"]}>
           {props.products.map((product) => (
-            <div key={product._id} className={styles["grid-item"]}>
+            <div key={product.id} className={styles["grid-item"]}>
               <Product
-                id={product._id}
+                id={product.id}
                 title={product.title}
                 price={product.price}
                 description={product.description}

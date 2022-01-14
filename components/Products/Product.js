@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./Product.module.css";
-import Link from "next/link";
+import {useRouter} from 'next/router'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faDollarSign,
@@ -9,10 +9,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Product = (props) => {
-  const id = props.id;
+
+  const router = useRouter();
+
+  const redirectToDeatils = () => {
+    router.push('/' + props.id)
+  }
+
   return (
-    <Link href = {"/"+id} passHref>
-      <div className={styles.product}>
+      <div className={styles.product} onClick={redirectToDeatils}>
         <h2>{props.title}</h2>
         <Image
           className={styles.image}
@@ -35,7 +40,6 @@ const Product = (props) => {
           </div>
         </div>
       </div>
-    </Link>
   );
 };
 
