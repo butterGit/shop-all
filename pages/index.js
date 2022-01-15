@@ -1,10 +1,8 @@
-import ProductsList from '../components/Products/ProductsList'
+import ProductsList from "../components/Products/ProductsList";
 import { MongoClient } from "mongodb";
 
 export default function Home(props) {
-  return (
-          <ProductsList products = {props.products} ></ProductsList>
-  )
+  return <ProductsList products={props.product}></ProductsList>;
 }
 
 export async function getStaticProps() {
@@ -21,17 +19,15 @@ export async function getStaticProps() {
 
   return {
     props: {
-      products: products.map((product) => ({
+      product: products.map((product) => ({
         id: product._id.toString(),
         title: product.title,
         price: product.price,
         category: product.category,
         image: product.image,
-        rating: product.rating
-        
+        rating: product.rating,
       })),
     },
-    revalidate: 10,
+    revalidate: 1,
   };
 }
-
