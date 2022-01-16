@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useContext } from 'react';
 import styles from "./Product.module.css";
 import {useRouter} from 'next/router'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,15 +7,29 @@ import {
   faDollarSign,
   faStar,
   faUserPlus,
+  faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
+import CartContext from '../../store/cart-context'
 
 const Product = (props) => {
-
+  const cartCtx = useContext(CartContext);
   const router = useRouter();
 
   const redirectToDeatils = () => {
     router.push('/' + props.id)
   }
+
+  const addToCartHandler = (e) => {
+    e.stopPropagation();
+    cartCtx.addItem({
+      id: props.id,
+      title: props.title,
+      price: props.price,
+      image: props.image,
+      amount: 1,
+    });
+  };
+
 
   return (
       <div className={styles.product} onClick={redirectToDeatils}>
@@ -38,7 +53,11 @@ const Product = (props) => {
           <div>
             <FontAwesomeIcon icon={faUserPlus} /> {props.count}
           </div>
+         
         </div>
+        <button id={styles["cart-button"]} onClick={addToCartHandler}>
+          Add to cart <FontAwesomeIcon icon={faShoppingCart} />
+        </button>
       </div>
   );
 };

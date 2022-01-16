@@ -8,7 +8,6 @@ const ProductsList = (props) => {
   return (
    
     <Fragment >
-      <div className={styles.filterSideNav}></div>
       <div className={styles.wrapper}>
         <div className={styles["flex-container"]}>
           {props.products.map((product) => (

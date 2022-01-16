@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useContext } from "react";
+import CartContext from "../../../store/cart-context";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
-import classnames from 'classnames';
+import classnames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faShoppingCart,
@@ -13,16 +14,28 @@ import {
 const Navbar = () => {
   const [isHamburgerActive, setHamburgerActive] = useState(false);
 
+  const cartCtx = useContext(CartContext);
+
+  const { items } = cartCtx;
+
+  const numberOfCartItems = items.reduce((curNumber, item) => {
+    return curNumber + item.amount;
+  }, 0);
+
   const unfoldMenu = () => {
     setHamburgerActive(!isHamburgerActive);
   };
 
   return (
-    <nav id = "navbar" className={classnames(styles.navbar, isHamburgerActive ? styles.responsive : '')}>
+    <nav
+      id="navbar"
+      className={classnames(
+        styles.navbar,
+        isHamburgerActive ? styles.responsive : ""
+      )}
+    >
       <Link href="/" passHref>
-        <div id={styles["logo"]}>
-          Shop-All
-        </div>
+        <div id={styles["logo"]}>Shop-All</div>
       </Link>
       <Link href="/account-details" passHref>
         <div id={styles["first-link"]} className={styles.link}>
@@ -31,7 +44,7 @@ const Navbar = () => {
       </Link>
       <Link href="/cart" passHref>
         <div className={styles.link}>
-          <FontAwesomeIcon icon={faShoppingCart} /> Cart
+          <FontAwesomeIcon icon={faShoppingCart} /> Cart {numberOfCartItems}
         </div>
       </Link>
       <Link href="/logout" passHref>
@@ -43,7 +56,7 @@ const Navbar = () => {
         onClick={unfoldMenu}
         className={styles.icon}
         icon={faBars}
-        size = '3x'
+        size="3x"
       />
     </nav>
   );

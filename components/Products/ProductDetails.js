@@ -16,9 +16,6 @@ const ProductDetails = (props) => {
     },
   ];
 
-  const addToBasket = () => {
-    //
-  };
 
   return (
     <div className={styles.container}>
@@ -30,7 +27,7 @@ const ProductDetails = (props) => {
           {props.product.price} <FontAwesomeIcon icon={faDollarSign} />
         </h2>
         <p>{props.product.description}</p>
-        <button id={styles["cart-button"]} onClick={addToBasket}>
+        <button id={styles["cart-button"]}>
           Add to cart <FontAwesomeIcon icon={faShoppingCart} />
         </button>
       </div>
