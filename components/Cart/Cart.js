@@ -13,15 +13,16 @@ const Cart = (props) => {
   const cartCtx = useContext(CartContext);
 
   const totalPrice = cartCtx.totalPrice.toFixed(2);
-  const hasItems = cartCtx.items.length > 0;
+  
+  // const hasItems = cartCtx.items.length > 0;
 
-  const cartItemRemoveHandler = (id) => {
-    cartCtx.removeItem(id);
-  };
+  // const cartItemRemoveHandler = (id) => {
+  //   cartCtx.removeItem(id);
+  // };
 
-  const cartItemAddHandler = (item) => {
-    cartCtx.addItem({ ...item, amount: 1 });
-  };
+  // const cartItemAddHandler = (item) => {
+  //   cartCtx.addItem({ ...item, amount: 1 });
+  // };
 
   return (
     <div className={styles["cart-container"]}>

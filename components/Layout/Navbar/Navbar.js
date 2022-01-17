@@ -10,11 +10,14 @@ import {
   faSignOutAlt,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
+import AuthContext from "../../../store/auth-context";
+import { AuthContextProvider } from "../../../store/auth-context"
 
 const Navbar = () => {
   const [isHamburgerActive, setHamburgerActive] = useState(false);
 
   const cartCtx = useContext(CartContext);
+  const authCtx = useContext(AuthContext);
 
   const { items } = cartCtx;
 
@@ -27,6 +30,7 @@ const Navbar = () => {
   };
 
   return (
+    <AuthContextProvider>
     <nav
       id="navbar"
       className={classnames(
@@ -47,11 +51,22 @@ const Navbar = () => {
           <FontAwesomeIcon icon={faShoppingCart} /> Cart {numberOfCartItems}
         </div>
       </Link>
-      <Link href="/logout" passHref>
-        <div className={styles.link}>
-          <FontAwesomeIcon icon={faSignOutAlt} /> Logout
-        </div>
-      </Link>
+
+      {authCtx.isLoggedIn && (
+        <Link href="/logout" passHref>
+          <div className={styles.link}>
+            <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+          </div>
+        </Link>
+      )}
+      {!authCtx.isLoggedIn && (
+        <Link href="/login" passHref>
+          <div className={styles.link}>
+            <FontAwesomeIcon icon={faSignOutAlt} /> Login
+          </div>
+        </Link>
+      )}
+
       <FontAwesomeIcon
         onClick={unfoldMenu}
         className={styles.icon}
@@ -59,6 +74,7 @@ const Navbar = () => {
         size="3x"
       />
     </nav>
+    </AuthContextProvider>
   );
 };
 
