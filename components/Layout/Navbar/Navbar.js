@@ -11,7 +11,6 @@ import {
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import AuthContext from "../../../store/auth-context";
-import { AuthContextProvider } from "../../../store/auth-context"
 
 const Navbar = () => {
   const [isHamburgerActive, setHamburgerActive] = useState(false);
@@ -30,7 +29,7 @@ const Navbar = () => {
   };
 
   return (
-    <AuthContextProvider>
+
     <nav
       id="navbar"
       className={classnames(
@@ -74,7 +73,7 @@ const Navbar = () => {
         size="3x"
       />
     </nav>
-    </AuthContextProvider>
+
   );
 };
 
