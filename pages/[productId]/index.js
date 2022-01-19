@@ -2,7 +2,11 @@ import ProductDetails from "../../components/Products/ProductDetails";
 import { MongoClient, ObjectId } from "mongodb";
 
 const ProductPage = (props) => {
-  return <ProductDetails product={props.productData}></ProductDetails>;
+  return (
+    <ProductDetails
+      product={props.productData}
+    ></ProductDetails>
+  );
 };
 
 export default ProductPage;
@@ -20,7 +24,7 @@ export async function getStaticPaths() {
   client.close();
 
   return {
-    fallback: true,
+    fallback: 'blocking',
     paths: products.map((product) => ({
       params: { productId: product._id.toString() },
     })),
@@ -37,20 +41,21 @@ export async function getStaticProps(context) {
 
   const productCollection = db.collection("products");
 
-  const selectedProduct = await productCollection.findOne({ _id: ObjectId(productId) });
+  const selectedProduct = await productCollection.findOne({
+    _id: ObjectId(productId),
+  });
 
   return {
     props: {
       productData: {
         id: selectedProduct._id.toString(),
-        title: selectedProduct.title  ,
+        title: selectedProduct.title,
         price: selectedProduct.price,
         description: selectedProduct.description,
         category: selectedProduct.category,
         image: selectedProduct.image,
-        rating: selectedProduct.rating   
-      }
+        rating: selectedProduct.rating,
+      },
     },
   };
 }
-

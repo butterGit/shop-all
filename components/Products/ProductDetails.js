@@ -7,16 +7,15 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ProductDetails = (props) => {
-  
+  const image = props.product.image;
   const images = [
     {
-      original: props.product.image,
+      original: image,
     },
     {
-      original: props.product.image,
+      original: image,
     },
   ];
-
 
   return (
     <div className={styles.container}>
