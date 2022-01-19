@@ -52,17 +52,22 @@ export const AuthContextProvider = (props) => {
 
   const [token, setToken] = useState(initialToken);
 
+
   const userIsLoggedIn = !!token;
 
   const logoutHandler = useCallback(() => {
     setToken(null);
+    
+    if (typeof window !== "undefined") {
     localStorage.removeItem("token");
     localStorage.removeItem("expirationTime");
+    }
 
     if (logoutTimer) {
       clearTimeout(logoutTimer);
     }
   }, []);
+
 
   const loginHandler = (token, expirationTime) => {
     setToken(token);
@@ -76,7 +81,6 @@ export const AuthContextProvider = (props) => {
 
   useEffect(() => {
     if (tokenData) {
-      console.log(tokenData.duration);
       logoutTimer = setTimeout(logoutHandler, tokenData.duration);
     }
   }, [tokenData, logoutHandler]);

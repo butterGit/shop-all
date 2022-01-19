@@ -37,7 +37,7 @@
   color: white;
 }
 
-@media screen and (max-width: 600px) {
+@media(max-width: 600px) {
   .link {
     display: none;
   }
@@ -50,7 +50,7 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media(max-width: 600px) {
   .navbar.responsive {
     position: relative;
   }

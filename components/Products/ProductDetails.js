@@ -7,6 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ProductDetails = (props) => {
+  
   const images = [
     {
       original: props.product.image,

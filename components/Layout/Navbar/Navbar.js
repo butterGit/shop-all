@@ -52,7 +52,7 @@ const Navbar = () => {
       </Link>
 
       {authCtx.isLoggedIn && (
-        <Link href="/logout" passHref>
+        <Link onClick = {authCtx.logout} href="/logout" passHref >
           <div className={styles.link}>
             <FontAwesomeIcon icon={faSignOutAlt} /> Logout
           </div>
